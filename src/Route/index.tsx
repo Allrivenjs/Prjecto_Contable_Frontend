@@ -7,7 +7,6 @@ import Login from "../Pages/Login";
 import NotFound from "../Pages/NotFound";
 
 //import { AuthProvider } from "../components/GlobalStates";
-import Register from "../Pages/Register";
 
 const Router = () => {
 	const [cookies] = useCookies(["user-token"]);
@@ -18,39 +17,25 @@ const Router = () => {
 				<Route
 
 					element={
-							<Layout />
+						cookies["user-token"] ? (
+							<Navigate to="/home" />
+						) : (
+								<Layout />
+							)
 					}
 				>
-					<Route
-						path="/register"
-						element={
-							cookies["user-token"] ? (
-								<Navigate to="/" />
-							) : (
-								<Register />
-							)
-						}
-					/>
-
-					<Route
-						path="/login"
-						element={
-							cookies["user-token"] ? (
-								<Navigate to="/" />
-							) : (
-								<Login />
-							)
-						}
-					/>
-
-					<Route path="/" element={<Home />} />
-
-
-
+					<Route path="/home" element={<Home />} />
 				</Route>
-
-
-
+				<Route
+					path="/"
+					element={
+						cookies["user-token"] ? (
+							<Navigate to="/home" />
+						) : (
+							<Login />
+						)
+					}
+				/>
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>
