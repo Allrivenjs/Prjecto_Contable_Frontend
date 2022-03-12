@@ -4,15 +4,16 @@ import { Navbar, Group, Code, ScrollArea, createStyles } from '@mantine/core';
 import { UserButton } from './UserButton/UserButton';
 import { LinksGroup } from './NavbarLinksGroup/NavbarLinksGroup';
 import  Logo  from '../Assets/svg/MantineLogo.svg';
+
 import {
 	AiFillContainer,
-	AiOutlineHome,
-	BsCashCoin,
-	BsTextParagraph, HiOutlineDocumentReport,
-	MdOutlineRequestPage, MdSplitscreen,
-	VscServerProcess
-} from "react-icons/all";
+	AiOutlineHome, } from "react-icons/ai";
+import { BsCashCoin,
+	BsTextParagraph, } from "react-icons/bs";
+import { MdOutlineRequestPage, MdSplitscreen } from "react-icons/md";
+import { VscServerProcess } from "react-icons/vsc";
 
+import { HiOutlineDocumentReport } from "react-icons/hi";
 const mockdata = [
 	{ label: 'Inicio', icon: AiOutlineHome },
 	{
