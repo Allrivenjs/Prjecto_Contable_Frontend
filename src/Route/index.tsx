@@ -35,6 +35,7 @@ const data = {
 		}
 	]
 }
+
 const Router = () => {
 	const [cookies] = useCookies(["user-token"]);
 
@@ -51,7 +52,9 @@ const Router = () => {
 							)
 					}
 				>
-					<Route path="/home" element={<Home data={data.data} />} />
+					<Route path="/home" element={
+						<Home  data={data.data} />
+					} />
 				</Route>
 				<Route
 					path="/"
