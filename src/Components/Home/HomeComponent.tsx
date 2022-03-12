@@ -10,11 +10,13 @@ import {
 
 const useStyles = createStyles((theme) => ({
     root: {
-        padding: theme.spacing.xl * 1.5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     value: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 700,
         lineHeight: 1,
     },
@@ -30,7 +32,7 @@ const useStyles = createStyles((theme) => ({
     },
 
     title: {
-        fontWeight: 700,
+        fontWeight: 500,
         textTransform: 'uppercase',
     },
 }));
@@ -54,21 +56,20 @@ const HomeComponent = ({ data } : StatsGridProps) => {
         const Icons: icon = stat.icon as icon;
         const Icon = icons[Icons];
 
-        const DiffIcon = stat.diff > 0 ? ArrowUpRight : ArrowDownRight;
+        const DiffIcon = stat.diff >= 0 ? ArrowUpRight : ArrowDownRight;
 
         return (
-            <Paper withBorder p="md" radius="md" key={stat.title}>
+            <Paper withBorder p="sm" radius="md" key={stat.title}>
                 <Group position="apart">
                     <Text size="xs" color="dimmed" className={classes.title}>
                         {stat.title}
                     </Text>
                     <Icon className={classes.icon} size={22} />
                 </Group>
-
                 <Group align="flex-end" spacing="xs" mt={25}>
                     <Text className={classes.value}>{stat.value}</Text>
                     <Text
-                        color={stat.diff > 0 ? 'teal' : 'red'}
+                        color={stat.diff >= 0 ? 'teal' : 'red'}
                         size="sm"
                         weight={500}
                         className={classes.diff}
@@ -85,9 +86,10 @@ const HomeComponent = ({ data } : StatsGridProps) => {
         );
     });
     return (
-        <div className={classes.root}>
+        <div>
             <SimpleGrid
                 cols={4}
+                className={classes.root}
                 breakpoints={[
                     { maxWidth: 'md', cols: 2 },
                     { maxWidth: 'xs', cols: 1 },
